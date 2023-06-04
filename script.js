@@ -4,7 +4,7 @@ var text = {
   2: "Pinguin can't fly",
   3: "8% of the American population thinks that they can beat a Bear in a bare hand fight",
   4: "The average person spends 6 months of their life waiting for a red light to turn green",
-  5: "35 cm...",
+  5: "Monster Musume <3.",
   6: "Star wars >>>> Harry Potter",
   7: "Deus Ex Machina",
   8: "Bref j'ai plus d'idée a mettre",
@@ -181,6 +181,15 @@ if ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window) {
       charged.style.boxShadow = "0 0 20px 10px rgba(173, 216, 230, 0.5)";
       charged.style.display = "block";
     } 
+    else if (key.toLowerCase().includes('protego')){
+      outputDiv.textContent = "PROTEGO";
+      outputDiv.style.color = "tomato";
+      let charged = document.getElementById("charged");
+      charged.style.backgroundColor = "tomato";
+      charged.style.borderColor = "tomato";
+      charged.style.boxShadow = "0 0 20px 10px rgba(255, 99, 71, 0.5)";
+      charged.style.display = "block";
+    } 
     else if (key.toLowerCase().includes('labo')){
       loading()
     }
@@ -209,49 +218,75 @@ if ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window) {
 
 dummy.addEventListener("click", function(event) {
   let charged = document.getElementById("charged");
-  if (charged.style.display === "block" && charged.style.backgroundColor === "red") {
-    let dummyimg = document.querySelector("#dummy > img");
-    console.log(dummyimg.src);
-    if (dummyimg.src == "http://127.0.0.1:5500/" + "img/dummy.png") {
-      let inflamare = document.getElementById("inflamare");
-      inflamare.style.display = "block";
-    } else if (dummyimg.src == "http://127.0.0.1:5500/" + "img/freeze.png") {
-      dummyimg.src = "img/dummy.png"
-      let inflamare = document.getElementById("inflamare");
-      inflamare.style.display = "block";
+  let dummyimg = document.querySelector("#dummy > img");
+  let inflamare = document.getElementById("inflamare");
+  if (charged.style.display === "block" && dummyimg.src == "http://127.0.0.1:5500/" + "img/shield_full.png") {
+    if (charged.style.backgroundColor === "white" || charged.style.backgroundColor === "black" || charged.style.backgroundColor === "orange"){
+
+    }else {
+      charged.style.display = "none";
+      charged.style.backgroundColor = "transparent";
+      dummyimg.src = "img/shield_half.png";
     }
-    charged.style.display = "none";
-    charged.style.backgroundColor = "transparent";
-  } else if (charged.style.display === "block" & charged.style.backgroundColor === "purple") {
-    let dummyimg = document.querySelector("#dummy > img");
-    dummy.style.animation = "leviosa 5s infinite linear";
-    dummyimg.style.animation = "leviosa2 5s infinite linear";
-    charged.style.display = "none";
-    charged.style.backgroundColor = "transparent";
-  } else if (charged.style.display === "block" & charged.style.backgroundColor === "green") {
-    scl = scl + 0.2;
-    dummy.style.scale = scl;
-    charged.style.display = "none";
-    charged.style.backgroundColor = "transparent";
-  } else if (charged.style.display === "block" & charged.style.backgroundColor === "blue") {
-    scl = scl - 0.2;
-    dummy.style.scale = scl;
-    charged.style.display = "none";
-    charged.style.backgroundColor = "transparent";
-  } else if (charged.style.display === "block" & charged.style.backgroundColor === "yellow") {
-    let dummyimg = document.querySelector("#dummy > img");
-    dummyimg.style.display = "none";
-    charged.style.display = "none";
-    charged.style.backgroundColor = "transparent";
-  } else if (charged.style.display === "block" & charged.style.backgroundColor === "lightblue") {
-    let dummyimg = document.querySelector("#dummy > img");
-    let inflamare = document.getElementById("inflamare");
-    inflamare.style.display = "none";
-    inflamare.style.animation = "none";
-    dummyimg.src = "img/freeze.png";
-    charged.style.display = "none";
-    charged.style.backgroundColor = "transparent";
+  } else if (charged.style.display === "block" && dummyimg.src == "http://127.0.0.1:5500/" + "img/shield_half.png") {
+    if (charged.style.backgroundColor === "white" || charged.style.backgroundColor === "black" || charged.style.backgroundColor === "orange"){
+
+    }else {
+      charged.style.display = "none";
+      charged.style.backgroundColor = "transparent";
+      dummyimg.src = "img/dummy.png";
+    }
+  } else { 
+    if (charged.style.display === "block" && charged.style.backgroundColor === "red") {
+      console.log(dummyimg.src);
+      if (dummyimg.src == "http://127.0.0.1:5500/" + "img/dummy.png") {
+        inflamare.style.display = "block";
+      } else if (dummyimg.src == "http://127.0.0.1:5500/" + "img/freeze.png") {
+        dummyimg.src = "img/dummy.png"
+        inflamare.style.display = "block";
+      }
+      charged.style.display = "none";
+      charged.style.backgroundColor = "transparent";
+    } 
+    else if (charged.style.display === "block" & charged.style.backgroundColor === "purple") {
+      dummy.style.animation = "leviosa 5s infinite linear";
+      dummyimg.style.animation = "leviosa2 5s infinite linear";
+      charged.style.display = "none";
+      charged.style.backgroundColor = "transparent";
+    } 
+    else if (charged.style.display === "block" & charged.style.backgroundColor === "green") {
+      scl = scl + 0.2;
+      dummy.style.scale = scl;
+      charged.style.display = "none";
+      charged.style.backgroundColor = "transparent";
+    } 
+    else if (charged.style.display === "block" & charged.style.backgroundColor === "blue") {
+      scl = scl - 0.2;
+      dummy.style.scale = scl;
+      charged.style.display = "none";
+      charged.style.backgroundColor = "transparent";
+    } 
+    else if (charged.style.display === "block" & charged.style.backgroundColor === "yellow") {
+      dummyimg.style.display = "none";
+      charged.style.display = "none";
+      charged.style.backgroundColor = "transparent";
+    } 
+    else if (charged.style.display === "block" & charged.style.backgroundColor === "lightblue") {
+      inflamare.style.display = "none";
+      inflamare.style.animation = "none";
+      dummyimg.src = "img/freeze.png";
+      charged.style.display = "none";
+      charged.style.backgroundColor = "transparent";
+    } 
+    else if (charged.style.display === "block" & charged.style.backgroundColor === "tomato") {
+      if (!dummyimg.style.display == "none") {
+        dummyimg.src = "img/shield_full.png";
+      }
+      charged.style.display = "none";
+      charged.style.backgroundColor = "transparent";
+    }
   }
+  
 });
 
 
@@ -297,7 +332,7 @@ var content = {
     title: "Fire spell",
     word: "I N F L A M A R E",
     type: "Single target",
-    effect: "Burns the target",
+    effect: "Burns the target (can melte ice)",
   },
   2: {
     title: "Arcane spell",
@@ -348,18 +383,24 @@ var content = {
     effect: "Dispell all spells",
   },
   10: {
+    title: "Ice spell",
+    word: "G L A C I U S",
+    type: "Single target",
+    effect: "Freeze the target (can stop fire)",
+  },
+  11: {
     title: "Invocation spell",
     word: " I N V O C A R E : G R I F F O N",
     type: "Summon",
     effect: "Summon a griffon",
   },
-  11: {
+  12: {
     title: "Invocation spell",
     word: " I N V O C A R E : D R A G O N",
     type: "Summon",
     effect: "Summon a dragon",
   },
-  12: {
+  13: {
     title: "Invocation spell",
     word : " I N V O C A R E : P H O E N I X",
     type: "Summon",
