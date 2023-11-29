@@ -282,7 +282,8 @@ dummy.addEventListener("click", function(event) {
       charged.style.backgroundColor = "transparent";
     } 
     else if (charged.style.display === "block" & charged.style.backgroundColor === "tomato") {
-      console.log("protego my friendo");
+      inflamare.style.display = "none";
+      inflamare.style.animation = "none";
       dummyimg.src = "img/shield_full.png";
       charged.style.display = "none";
       charged.style.backgroundColor = "transparent";
