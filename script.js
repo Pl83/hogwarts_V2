@@ -10,6 +10,9 @@ var text = {
   8: "Bref j'ai plus d'idée a mettre",
   9: "the most important is the essential and this is the main",
   10: "ouais c'est pas faux",
+  11: "I'm not a robot",
+  12: "I am groot",
+  13: "Barghest is a mythical monstrous black dog with huge teeth and claws"
 }
 
 function arrive(){
@@ -220,7 +223,7 @@ dummy.addEventListener("click", function(event) {
   let charged = document.getElementById("charged");
   let dummyimg = document.querySelector("#dummy > img");
   let inflamare = document.getElementById("inflamare");
-  if (charged.style.display === "block" && dummyimg.src == "http://127.0.0.1:5500/" + "img/shield_full.png") {
+  if (charged.style.display === "block" && dummyimg.src.includes("img/shield_full.png") ) {
     if (charged.style.backgroundColor === "white" || charged.style.backgroundColor === "black" || charged.style.backgroundColor === "orange"){
 
     }else {
@@ -228,7 +231,7 @@ dummy.addEventListener("click", function(event) {
       charged.style.backgroundColor = "transparent";
       dummyimg.src = "img/shield_half.png";
     }
-  } else if (charged.style.display === "block" && dummyimg.src == "http://127.0.0.1:5500/" + "img/shield_half.png") {
+  } else if (charged.style.display === "block" && dummyimg.src.includes("img/shield_half.png") ) {
     if (charged.style.backgroundColor === "white" || charged.style.backgroundColor === "black" || charged.style.backgroundColor === "orange"){
 
     }else {
@@ -239,11 +242,11 @@ dummy.addEventListener("click", function(event) {
   } else { 
     if (charged.style.display === "block" && charged.style.backgroundColor === "red") {
       console.log(dummyimg.src);
-      if (dummyimg.src == "http://127.0.0.1:5500/" + "img/dummy.png") {
+      if (dummyimg.src.includes("img/dummy.png") ) {
         inflamare.style.display = "block";
-      } else if (dummyimg.src == "http://127.0.0.1:5500/" + "img/freeze.png") {
+      } else if (dummyimg.src.includes("img/freeze.png") ) {
         dummyimg.src = "img/dummy.png"
-        inflamare.style.display = "block";
+        inflamare.style.display = "none";
       }
       charged.style.display = "none";
       charged.style.backgroundColor = "transparent";
@@ -279,9 +282,8 @@ dummy.addEventListener("click", function(event) {
       charged.style.backgroundColor = "transparent";
     } 
     else if (charged.style.display === "block" & charged.style.backgroundColor === "tomato") {
-      if (!dummyimg.style.display == "none") {
-        dummyimg.src = "img/shield_full.png";
-      }
+      console.log("protego my friendo");
+      dummyimg.src = "img/shield_full.png";
       charged.style.display = "none";
       charged.style.backgroundColor = "transparent";
     }
@@ -329,40 +331,42 @@ var content = {
     effect: "to all wizards",
   },
   1: {
+    title: "Tp spell",
+    word: "L A B O",
+    type: "Self",
+    effect: "teleport to the labo",
+  },
+  2: {
+    title: "Tp spell",
+    word: "T E R R A I N",
+    type: "Self",
+    effect: "teleport to the training ground",
+  },
+  3: {
     title: "Fire spell",
     word: "I N F L A M A R E",
     type: "Single target",
     effect: "Burns the target (can melte ice)",
   },
-  2: {
-    title: "Arcane spell",
-    word: "L E V I O S A",
-    type: "Single target",
-    effect: "Levitates the target",
-  },
-  3: {
-    title: "Arcane spell",
-    word: "A M P L I F I C A T U M",
-    type: "Single target",
-    effect: "Increases the target's size",
-  },
   4: {
-    title: "Arcane spell",
-    word: "R E D U C T O",
+    title: "Ice spell",
+    word: "G L A C I U S",
     type: "Single target",
-    effect: "Decreases the target's size",
+    effect: "Freeze the target (can stop fire)",
   },
   5: {
+    title: "Dark spell",
+    word: "N O X",
+    type: "AOE",
+    effect: "Aspire all light",
+    
+  },
+  6: {
     title: "Light spell",
     word: "I N V I S I B I L A T O",
     type: "Single target",
     effect: "Makes the target invisible",
-  },
-  6: {
-    title: "Arcane spell",
-    word: "R E V E L I O",
-    type: "AOE",
-    effect: "Makes visible everything",
+    
   },
   7: {
     title: "Light spell",
@@ -371,36 +375,55 @@ var content = {
     effect: "Creat a flash of light",
   },
   8: {
-    title: "Dark spell",
-    word: "N O X",
+    title: "Arcane spell",
+    word: "R E V E L I O",
     type: "AOE",
-    effect: "Aspire all light",
+    effect: "Makes visible everything",
   },
   9: {
+    
+    title: "Arcane spell",
+    word: "R E D U C T O",
+    type: "Single target",
+    effect: "Decreases the target's size",
+  },
+  10: {
+    title: "Arcane spell",
+    word: "A M P L I F I C A T U M",
+    type: "Single target",
+    effect: "Increases the target's size",
+  },
+  11: {
     title: "Arcane spell",
     word: " D I S P E L L I U M",
     type: "AOE",
     effect: "Dispell all spells",
   },
-  10: {
-    title: "Ice spell",
-    word: "G L A C I U S",
+  12: {
+    title: "Arcane spell",
+    word: "L E V I O S A",
     type: "Single target",
-    effect: "Freeze the target (can stop fire)",
+    effect: "Levitates the target",
   },
-  11: {
+  13: {
+    title: "Arcane spell",
+    word: "P R O T E G O",
+    type: "Single target",
+    effect: "Creates a shield",
+  },
+  14: {
     title: "Invocation spell",
     word: " I N V O C A R E : G R I F F O N",
     type: "Summon",
     effect: "Summon a griffon",
   },
-  12: {
+  15: {
     title: "Invocation spell",
     word: " I N V O C A R E : D R A G O N",
     type: "Summon",
     effect: "Summon a dragon",
   },
-  13: {
+  16: {
     title: "Invocation spell",
     word : " I N V O C A R E : P H O E N I X",
     type: "Summon",
@@ -470,7 +493,7 @@ var content = {
   });
 
   future.addEventListener("click", function(event) {
-    if (page < 11) {
+    if (page < 16) {
       page++;
       SpellNoteText.style.animationName = "turn1";
       SpellNoteText.addEventListener("animationend", function() {
